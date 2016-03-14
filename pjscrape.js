@@ -355,10 +355,10 @@ var pjs = (function(){
         file: function(log) {
             var w = new writers.base(log);
             // clear file
-            fs.write(config.outFile, '', 'w');
+            fs.write(config.outFile, '', { mode: 'w', charset: config.encoding || 'UTF-8' });
             // write method
             w.write = function(s) {
-                fs.write(config.outFile, s, 'a');
+                fs.write(config.outFile, s, { mode: 'w', charset: config.encoding || 'UTF-8' });
             };
             return w;
         },
